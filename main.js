@@ -7,26 +7,73 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nSyntaxError: /Users/enygf/Documents/apps/innowise/weather/src/index.js: Unexpected reserved word 'await'. (6:19)\\n\\n\\u001b[0m \\u001b[90m 4 |\\u001b[39m\\u001b[0m\\n\\u001b[0m \\u001b[90m 5 |\\u001b[39m btn\\u001b[33m.\\u001b[39maddEventListener(\\u001b[32m\\\"click\\\"\\u001b[39m\\u001b[33m,\\u001b[39m () \\u001b[33m=>\\u001b[39m {\\u001b[0m\\n\\u001b[0m\\u001b[31m\\u001b[1m>\\u001b[22m\\u001b[39m\\u001b[90m 6 |\\u001b[39m     \\u001b[36mlet\\u001b[39m response \\u001b[33m=\\u001b[39m \\u001b[36mawait\\u001b[39m fetch(\\u001b[32m\\\"http://api.weatherapi.com/v1/current.json?key=f3355337615d498fbfa03825211912&q=Minsk\\\"\\u001b[39m)\\u001b[33m;\\u001b[39m\\u001b[0m\\n\\u001b[0m \\u001b[90m   |\\u001b[39m                    \\u001b[31m\\u001b[1m^\\u001b[22m\\u001b[39m\\u001b[0m\\n\\u001b[0m \\u001b[90m 7 |\\u001b[39m     \\u001b[36mlet\\u001b[39m commits \\u001b[33m=\\u001b[39m \\u001b[36mawait\\u001b[39m response\\u001b[33m.\\u001b[39mjson()\\u001b[33m;\\u001b[39m\\u001b[0m\\n\\u001b[0m \\u001b[90m 8 |\\u001b[39m\\u001b[0m\\n\\u001b[0m \\u001b[90m 9 |\\u001b[39m     console\\u001b[33m.\\u001b[39mlog(commits)\\u001b[0m\\n    at Parser._raise (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:569:17)\\n    at Parser.raiseWithData (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:562:17)\\n    at Parser.raise (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:523:17)\\n    at Parser.checkReservedWord (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:13047:12)\\n    at Parser.parseIdentifierName (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:13001:12)\\n    at Parser.parseIdentifier (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:12971:23)\\n    at Parser.parseExprAtom (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:12070:27)\\n    at Parser.parseExprSubscripts (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:11654:23)\\n    at Parser.parseUpdate (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:11634:21)\\n    at Parser.parseMaybeUnary (/Users/enygf/Documents/apps/innowise/weather/node_modules/@babel/parser/lib/index.js:11609:23)\");\n\n//# sourceURL=webpack://weather/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.sass */ \"./src/styles/main.sass\");\n\nconst _apiBase = \"http://api.weatherapi.com/v1/\";\nconst _apiKey = \"f3355337615d498fbfa03825211912\";\n\n//# sourceURL=webpack://weather/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/styles/main.sass":
+/*!******************************!*\
+  !*** ./src/styles/main.sass ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://weather/./src/styles/main.sass?");
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/index.js"]();
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
 /******/ 	
 /******/ })()
 ;
