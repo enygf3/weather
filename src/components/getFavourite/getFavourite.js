@@ -1,9 +1,4 @@
-const getFavourite = (cityInput) => {
-
-    let check = document.querySelector(".app-city-check")
-    let city = document.querySelector(".app-city")
-    let star = document.querySelector(".app-city-star")
-        
+const getFavourite = (cityInput, check, city, star) => {        
     //checking if the localStorage contains the city
 
     if(!localStorage.getItem(cityInput)) {
@@ -12,7 +7,7 @@ const getFavourite = (cityInput) => {
         console.log(localStorage.getItem(cityInput))
     }
 
-    check.addEventListener("click", (e) => {
+    check.onclick = function() {
         const lower = city.innerHTML.toLowerCase()
         if( lower == cityInput) {
             localStorage.setItem(cityInput, +(!(+localStorage.getItem(cityInput))))
@@ -23,7 +18,7 @@ const getFavourite = (cityInput) => {
             }
         }
         console.log(cityInput, lower)
-    })
+    }
 
     if(+localStorage.getItem(cityInput)) {
         star.src = "https://img.icons8.com/fluency/48/000000/star.png"
