@@ -8,6 +8,7 @@ const _apiKey = "f3355337615d498fbfa03825211912"
 
 //getting html tags
 let check = document.querySelector(".app-city-check")
+let cityImg = document.querySelector(".app-city-img")
 let city = document.querySelector(".app-city")
 let star = document.querySelector(".app-city-star")
 let temp = document.querySelector(".app-temp")
@@ -45,6 +46,7 @@ function valid(res) {
 
         //pushing weather info
         city.innerHTML = res.location.name;
+        cityImg.src = res.current.condition.icon;
         temp.innerHTML = Math.round(res.current.temp_c) + "°";
         cloud.innerHTML = res.current.condition.text;
         windDir.innerHTML = res.current.wind_dir;
