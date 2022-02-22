@@ -6,10 +6,12 @@ $htmlWidth: 100%
     margin: 0 auto
     outline: none
     font-family: Arial, Helvetica, sans-serif
+    user-select: none
 
 html, body
     width: $htmlWidth
     height: 100%
+    overflow: hidden
 
 #app
     width: 100%
@@ -20,7 +22,7 @@ html, body
     width: 300px
     height: auto
     position: relative
-    top: 45%
+    margin-top: 250px
     margin-left: 50%
     transform: translate(-50%, 0%)
     display: flex
@@ -95,9 +97,10 @@ html, body
     background: transparent
     width: 300px
     height: 40px
-    position: absolute
-    top: 40px
-    left: 50%
+    // position: fixed
+    // top: 40px
+    // left: 50%
+    margin: 40px 0px 0px 50%
     transform: translate(-50%, 0%)
     border-radius: 20px
     color: #fff

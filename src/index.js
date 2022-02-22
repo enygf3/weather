@@ -62,3 +62,7 @@ function valid(res) {
         alert("Some error has occured. Try other city or check your internet connection")
     }
 }
+
+input.addEventListener("click", (e) => {
+    windDir.innerHTML = window.innerHeight
+})
