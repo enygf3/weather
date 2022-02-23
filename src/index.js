@@ -1,6 +1,7 @@
 import "./styles/main.sass"
 import getTheme from "./components/getTheme/getTheme.js"
 import getFavourite from "./components/getFavourite/getFavourite"
+import getSimilarCities from "./components/search/search"
 
 //api info
 const _apiBase = "https://api.weatherapi.com/v1/"
@@ -29,6 +30,9 @@ let cityValue = "minsk";
 let input = document.querySelector(".block-input")
 
 input.addEventListener("keydown", (e) => {
+    if(input.value.length > 2) {
+        getSimilarCities(input.value)
+    }
     if(e.key == "Enter") {
         cityValue = input.value
         cityValue = cityValue.toLowerCase()
