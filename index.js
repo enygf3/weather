@@ -31,7 +31,7 @@ let seacrhItems = [];
 //getting input form user, transforming it and sendind a query if the input is valid
 let input = document.querySelector(".app-input-field")
 
-input.addEventListener("keydown", (e) => {
+input.addEventListener("keyup", (e) => {
     if(input.value.length > 2) {
         getSimilarCities(input.value)
         console.log("lol")
