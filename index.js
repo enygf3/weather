@@ -26,6 +26,7 @@ fetch(`${_apiBase}current.json?key=${_apiKey}&q=Minsk&aqi=no`)
     .then(result => valid(result))
 
 let cityValue = "minsk";
+let seacrhItems = [];
 
 //getting input form user, transforming it and sendind a query if the input is valid
 let input = document.querySelector(".app-input-field")
@@ -37,11 +38,24 @@ input.addEventListener("keydown", (e) => {
     } else {
         deleteSimilarBlock()
     }
+
+    seacrhItems = document.querySelectorAll(".block-item")
+    for(let el of seacrhItems) {
+        el.onclick = function() {
+            fetch(`${_apiBase}current.json?key=${_apiKey}&q=${el.innerText.toLowerCase()}&aqi=no`)
+            .then(res => res.json())
+            .then(result => valid(result))
+
+            deleteSimilarBlock()
+            input.value = ""
+            cityValue = el.innerText.toLowerCase()
+        }
+    }
+
     if(e.key == "Enter") {
         cityValue = input.value
         cityValue = cityValue.toLowerCase()
         if(cityValue != "" && cityValue != " ") {
-            console.log(cityValue)
             fetch(`${_apiBase}current.json?key=${_apiKey}&q=${cityValue}&aqi=no`)
             .then(res => res.json())
             .then(result => valid(result))
@@ -51,6 +65,9 @@ input.addEventListener("keydown", (e) => {
 
 function valid(res) {
     if(res) {
+
+        deleteSimilarBlock()
+        input.value = ""
 
         //pushing weather info
         city.innerHTML = res.location.name;

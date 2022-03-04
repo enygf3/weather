@@ -1,6 +1,6 @@
-const deleteSimilarBlock = () => {
+const deleteSimilarBlock = (props) => {
     let block = document.querySelector(".app-input-block")
-    if(block) {
+    if(props || block) {
         block.remove()
     }
 }
