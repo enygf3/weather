@@ -1,0 +1,156 @@
+$htmlWidth: 100%
+    
+*
+    box-sizing: border-box
+    padding: 0
+    margin: 0 auto
+    outline: none
+    font-family: Arial, Helvetica, sans-serif
+    user-select: none
+
+html, body
+    width: $htmlWidth
+    height: 100%
+    overflow: hidden
+
+#app
+    width: 100%
+    height: 100%
+    background: #14033D
+
+.block
+    width: 300px
+    height: auto
+    position: relative
+    margin-top: 250px
+    margin-left: 50%
+    transform: translate(-50%, 0%)
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    align-items: start
+    justify-content: space-evenly
+    color: #fff
+    h3, div
+        margin-left: 0
+        margin-top: 15px
+    img
+        width: 25px
+        height: 18px
+        padding-right: 5px
+    div
+        display: flex
+        flex-direction: row
+        align-items: end
+        justify-content: space-between
+        background-color: #28244e
+        padding: 20px 10px 20px 10px
+        border-radius: 20px
+        min-width: 110px
+        margin: 15px
+
+.app-city
+    color: #fff
+    position: absolute
+    top: 120px
+    left: 85px
+    font-size: 18px
+    border-radius: 25px
+    font-weight: 400
+
+.app-city-img
+    width: 125px
+    height: 125px
+    position: absolute
+    top: 120px
+    right: 50px
+
+.app-city-block
+    .app-city-star
+        width: 25px
+        height: 25px
+        position: absolute
+        top: 115px
+        left: 55px
+        cursor: pointer
+    input
+        position: absolute
+        top: 120px
+        left: 55px
+        opacity: 0
+
+.app-temp
+    color: #fff
+    position: absolute
+    top: 150px
+    left: 90px
+    font-size: 44px
+    border-radius: 25px
+    font-weight: 400
+
+.app-cloud
+    color: #fff
+    position: absolute
+    top: 210px
+    left: 50px
+    font-size: 18px
+    border-radius: 25px
+    font-weight: 400
+    padding: 10px 15px 10px 15px
+    background-color: #28244e
+
+.app-input-field
+    background-color: #28244e
+    border: none
+    width: 300px
+    height: 40px
+    margin: 40px 0px 0px 50%
+    transform: translate(-50%, 0%)
+    border-radius: 20px
+    color: #fff
+    padding-left: 15px
+
+.text
+    font-size: 14px
+
+.app-bottom-panel
+    width: 100%
+    height: 50px
+    background: transparent
+    position: fixed
+    bottom: 0
+    left: 0
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+    align-items: center
+    justify-content: space-evenly
+
+.app-input-block
+    border-radius: 0px 0px 15px 15px
+    border-top: 1px solid #14033D
+    background: #28244e
+    width: 250px
+    display: flex
+    flex-direction: column
+    flex-wrap: nowrap
+    align-content: space-evenly
+    justify-content: space-evenly
+    align-items: center
+    position: absolute
+    left: 50%
+    transform: translate(-50%, 0%)
+    z-index: 3
+    p
+        color: #fff
+        font-size: 18px
+        position: absolute
+        top: 50%
+        left: 50px
+        transform: translate(0%, -50%)
+    div
+        border-top: 1px solid #14033D
+        height: 40px
+        position: relative
+        width: 250px
+            
