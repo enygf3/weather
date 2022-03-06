@@ -2,6 +2,8 @@ const getSimilarCities = (props) => {
     const _apiBase = "https://api.weatherapi.com/v1/"
     const _apiKey = "f3355337615d498fbfa03825211912"   
 
+    let arr = [];
+
     //sending a query to get similar cities
     fetch(`${_apiBase}search.json?key=${_apiKey}&q=${props}`)
     .then(res => res.json())
@@ -9,8 +11,6 @@ const getSimilarCities = (props) => {
 
     //function that gets the result from the query, transforming it and creating items
     function getResults(res) {
-        let arr = [];
-
         //pushing into a new arr first 3 elements from the response
         for(let i = 0; i < 3; i++) {
             arr.push(res[i])
@@ -41,14 +41,6 @@ const getSimilarCities = (props) => {
                 items[i].innerHTML = arr[i].name
             }
         }
-
-        //creating p's for each element
-        // for(let el of arr) {
-        //     let p = document.createElement("p")
-        //     p.className = "app-city-item"
-        //     p.innerHTML = el.name
-        //     cityBlock.appendChild(p)
-        // }
     }
 }
 

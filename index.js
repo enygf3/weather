@@ -3,6 +3,10 @@ import getTheme from "./components/getTheme/getTheme.js"
 import getFavourite from "./components/getFavourite/getFavourite"
 import getSimilarCities from "./components/getSimilarCities/getSimilarCities"
 import deleteSimilarBlock from "./components/deleteSimilarBlock/deleteSimilarBlock"
+import favouritePage from "./components/favouritePage/favouritePage"
+
+import home from "./img/home.png"
+import favourite from "./img/favourite.png"
 
 //api info
 const _apiBase = "https://api.weatherapi.com/v1/"
@@ -28,18 +32,23 @@ fetch(`${_apiBase}current.json?key=${_apiKey}&q=Minsk&aqi=no`)
 let cityValue = "minsk";
 let seacrhItems = [];
 
-//getting input form user, transforming it and sendind a query if the input is valid
+//getting input from user, transforming it and sending a query if the input is valid
 let input = document.querySelector(".app-input-field")
 
-input.addEventListener("keyup", (e) => {
-    if(input.value.length > 2) {
+input.onkeyup = handle;
+let i = 0;
+
+function handle(e) {
+
+    seacrhItems = document.querySelectorAll(".block-item")
+
+    if(input.value.length >= 3) {
         getSimilarCities(input.value)
-        console.log("lol")
+        console.log(e.target.value, i++)
     } else {
         deleteSimilarBlock()
     }
 
-    seacrhItems = document.querySelectorAll(".block-item")
     for(let el of seacrhItems) {
         el.onclick = function() {
             fetch(`${_apiBase}current.json?key=${_apiKey}&q=${el.innerText.toLowerCase()}&aqi=no`)
@@ -61,7 +70,9 @@ input.addEventListener("keyup", (e) => {
             .then(result => valid(result))
         }
     }
-})
+}
+
+console.log(window.location.href)
 
 function valid(res) {
     if(res) {
@@ -87,5 +98,25 @@ function valid(res) {
 
     } else {
         alert("Some error has occured. Try other city or check your internet connection")
+    }
+}
+
+let favBtn = document.querySelector(".panel-item-favourites")
+let homeBtn = document.querySelector(".panel-item-home")
+
+favBtn.addEventListener("click", (e) => {
+    window.location.href = address + "favourite"
+})
+
+homeBtn.addEventListener("click", (e) => {
+    window.location.href = address
+})
+
+let address = window.location.href
+
+window.onload = function() {
+
+    if(address.includes("favourite")) {
+        favouritePage()
     }
 }
