@@ -3,10 +3,14 @@ import getTheme from "./components/getTheme/getTheme.js"
 import getFavourite from "./components/getFavourite/getFavourite"
 import getSimilarCities from "./components/getSimilarCities/getSimilarCities"
 import deleteSimilarBlock from "./components/deleteSimilarBlock/deleteSimilarBlock"
-import favouritePage from "./components/favouritePage/favouritePage"
+import pageRouter from "./components/router/router"
 
 import home from "./img/home.png"
 import favourite from "./img/favourite.png"
+
+pageRouter()
+
+function loaded() {
 
 //api info
 const _apiBase = "https://api.weatherapi.com/v1/"
@@ -25,6 +29,7 @@ let humidity = document.querySelector(".block-humidity")
 let pressure = document.querySelector(".block-pressure")
 
 //base query which is executed when the app is load
+
 fetch(`${_apiBase}current.json?key=${_apiKey}&q=Minsk&aqi=no`)
     .then(res => res.json())
     .then(result => valid(result))
@@ -100,23 +105,6 @@ function valid(res) {
         alert("Some error has occured. Try other city or check your internet connection")
     }
 }
-
-let favBtn = document.querySelector(".panel-item-favourites")
-let homeBtn = document.querySelector(".panel-item-home")
-
-favBtn.addEventListener("click", (e) => {
-    window.location.href = address + "favourite"
-})
-
-homeBtn.addEventListener("click", (e) => {
-    window.location.href = address
-})
-
-let address = window.location.href
-
-window.onload = function() {
-
-    if(address.includes("favourite")) {
-        favouritePage()
-    }
 }
+
+setTimeout(loaded, 100)
