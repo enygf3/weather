@@ -11,7 +11,15 @@ $htmlWidth: 100%
 html, body
     width: $htmlWidth
     height: 100%
-    overflow: hidden
+
+
+a
+    text-decoration: none
+    &:visited
+        color: #fff
+
+    &:active
+        color: #fff
 
 #app
     width: 100%
@@ -55,29 +63,32 @@ html, body
     top: 120px
     left: 85px
     font-size: 18px
-    border-radius: 25px
     font-weight: 400
 
 .app-city-img
-    width: 125px
-    height: 125px
+    width: 100px
+    height: 100px
     position: absolute
-    top: 120px
-    right: 50px
+    top: 115px
+    right: 60px
+
+.app-input
+    overflow: hidden
 
 .app-city-block
-    .app-city-star
-        width: 25px
-        height: 25px
-        position: absolute
-        top: 115px
-        left: 55px
-        cursor: pointer
     input
         position: absolute
         top: 120px
         left: 55px
         opacity: 0
+
+.app-city-star
+    width: 25px
+    height: 25px
+    position: absolute
+    top: 115px
+    left: 55px
+    cursor: pointer
 
 .app-temp
     color: #fff
@@ -99,7 +110,7 @@ html, body
     padding: 10px 15px 10px 15px
     background-color: #28244e
 
-.block-input
+.app-input-field
     background-color: #28244e
     border: none
     width: 300px
@@ -116,7 +127,6 @@ html, body
 .app-bottom-panel
     width: 100%
     height: 50px
-    background: transparent
     position: fixed
     bottom: 0
     left: 0
@@ -125,3 +135,58 @@ html, body
     flex-wrap: nowrap
     align-items: center
     justify-content: space-evenly
+    background: #1d193b
+    div
+        margin-top: 5px
+        cursor: pointer
+
+.app-title
+    color: #fff
+    font-size: 30px
+    position: relative
+    top: 30px
+    left: 40px
+
+.app-cities
+    color: #fff
+    width: 80%
+    margin-top: 60px
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-evenly
+    div
+        width: 120px
+        height: 60px
+        border-radius: 15px
+        background: #28244e
+        font-size: 18px
+        position: relative
+        h3
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+
+@media all and (min-width: 800px) 
+    .app-city-img
+        right: calc(50% - 130px)
+
+    .app-city
+        left: calc(50% - 130px)
+
+    .app-temp
+        left: calc(50% - 130px)
+
+    .app-cloud
+        left: calc(50% - 130px)
+
+    .app-city-star
+        left: calc(50% - 160px)
+
+    .app-cities
+        width: 650px
+        div
+            width: 150px
+            height: 80px

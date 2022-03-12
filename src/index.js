@@ -1,7 +1,16 @@
 import "./styles/main.sass"
 import getTheme from "./components/getTheme/getTheme.js"
 import getFavourite from "./components/getFavourite/getFavourite"
-import getSimilarCities from "./components/search/search"
+import getSimilarCities from "./components/getSimilarCities/getSimilarCities"
+import deleteSimilarBlock from "./components/deleteSimilarBlock/deleteSimilarBlock"
+import pageRouter from "./components/router/router"
+
+import home from "./img/home.png"
+import favourite from "./img/favourite.png"
+
+pageRouter()
+
+function loaded() {
 
 //api info
 const _apiBase = "https://api.weatherapi.com/v1/"
@@ -20,33 +29,61 @@ let humidity = document.querySelector(".block-humidity")
 let pressure = document.querySelector(".block-pressure")
 
 //base query which is executed when the app is load
+
 fetch(`${_apiBase}current.json?key=${_apiKey}&q=Minsk&aqi=no`)
     .then(res => res.json())
     .then(result => valid(result))
 
 let cityValue = "minsk";
+let seacrhItems = [];
 
-//getting input form user, transforming it and sendind a query if the input is valid
-let input = document.querySelector(".block-input")
+//getting input from user, transforming it and sending a query if the input is valid
+let input = document.querySelector(".app-input-field")
 
-input.addEventListener("keydown", (e) => {
-    if(input.value.length > 2) {
+input.onkeyup = handle;
+let i = 0;
+
+function handle(e) {
+
+    seacrhItems = document.querySelectorAll(".block-item")
+
+    if(input.value.length >= 3) {
         getSimilarCities(input.value)
+        console.log(e.target.value, i++)
+    } else {
+        deleteSimilarBlock()
     }
+
+    for(let el of seacrhItems) {
+        el.onclick = function() {
+            fetch(`${_apiBase}current.json?key=${_apiKey}&q=${el.innerText.toLowerCase()}&aqi=no`)
+            .then(res => res.json())
+            .then(result => valid(result))
+
+            deleteSimilarBlock()
+            input.value = ""
+            cityValue = el.innerText.toLowerCase()
+        }
+    }
+
     if(e.key == "Enter") {
         cityValue = input.value
         cityValue = cityValue.toLowerCase()
         if(cityValue != "" && cityValue != " ") {
-            console.log(cityValue)
             fetch(`${_apiBase}current.json?key=${_apiKey}&q=${cityValue}&aqi=no`)
             .then(res => res.json())
             .then(result => valid(result))
         }
     }
-})
+}
+
+console.log(window.location.href)
 
 function valid(res) {
     if(res) {
+
+        deleteSimilarBlock()
+        input.value = ""
 
         //pushing weather info
         city.innerHTML = res.location.name;
@@ -68,3 +105,6 @@ function valid(res) {
         alert("Some error has occured. Try other city or check your internet connection")
     }
 }
+}
+
+setTimeout(loaded, 100)
