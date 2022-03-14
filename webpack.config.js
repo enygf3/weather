@@ -56,6 +56,17 @@ module.exports = {
                 loader: MiniCssExtractPlugin.loader,
                 options: {}
             }, "css-loader", "sass-loader"]
-        }]
+        },
+        {
+            test: /\.(png|jpe?g|gif|webp)$/,
+            use: [{
+                loader: "file-loader",
+                options: {
+                    name: "[name].[ext]",
+                    outputPath: "./",
+                    useRelativePath: true
+                }
+            }]
+        },]
     }
 }
