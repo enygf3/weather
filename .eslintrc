@@ -1,7 +1,10 @@
 {
     "parser": "@babel/eslint-parser",
     "rules": {
-      "no-unused-vars": "off"
+      "no-unused-vars": "off",
+      "prettier/prettier": ["error", {
+        "useTabs": true
+      }]
     },
     "env": {
       "browser": true
@@ -10,6 +13,11 @@
         "requireConfigFile": false
     },
     "extends": [
-      "eslint:recommended"
+      "eslint:recommended",
+      "prettier",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "prettier"
     ]
   }
