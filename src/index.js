@@ -49,7 +49,8 @@ function handle(e) {
 	}
 
 	for (let el of seacrhItems) {
-		el.onclick = function () {
+		el.onclick = () => {
+			console.log(el);
 			fetch(
 				`${_apiBase}current.json?key=${_apiKey}&q=${el.innerText.toLowerCase()}&aqi=no`
 			)
