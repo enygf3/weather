@@ -30,6 +30,8 @@ fetch(`${_apiBase}current.json?key=${_apiKey}&q=Minsk&aqi=no`)
 	.then((res) => res.json())
 	.then((result) => valid(result));
 
+router();
+
 let cityValue = "minsk";
 let seacrhItems = [];
 
@@ -98,4 +100,10 @@ function valid(res) {
 	}
 }
 
-router();
+export function getSavedCity(props) {
+	let name = props;
+	name = name.toLowerCase();
+	fetch(`${_apiBase}current.json?key=${_apiKey}&q=${name}&aqi=no`)
+		.then((res) => res.json())
+		.then((result) => valid(result));
+}

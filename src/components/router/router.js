@@ -1,4 +1,5 @@
 import favouritePage from "../favouritePage/favouritePage";
+import { getSavedCity } from "../..";
 
 function router() {
 	let home = document.querySelector(".panel-item-home");
@@ -13,6 +14,14 @@ function router() {
 	favourite.addEventListener("click", (e) => {
 		history.pushState(null, null, "/favourite");
 		pageChange();
+		let elements = document.querySelectorAll(".favourite-block-item");
+		for (let el of elements) {
+			el.onclick = function () {
+				getSavedCity(el.firstChild.innerHTML);
+				history.pushState(null, null, "/");
+				pageChange();
+			};
+		}
 	});
 
 	home.addEventListener("click", (e) => {
