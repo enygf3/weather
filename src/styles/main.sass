@@ -12,19 +12,9 @@ html, body
     width: $htmlWidth
     height: 100%
 
-
-a
-    text-decoration: none
-    &:visited
-        color: #fff
-
-    &:active
-        color: #fff
-
 #app
     width: 100%
     height: 100%
-    background: #14033D
 
 .block
     width: 300px
@@ -66,8 +56,8 @@ a
     font-weight: 400
 
 .app-city-img
-    width: 100px
-    height: 100px
+    width: 80px
+    height: 80px
     position: absolute
     top: 115px
     right: 60px
@@ -168,6 +158,29 @@ a
             top: 50%
             left: 50%
             transform: translate(-50%, -50%)
+
+.app-input-block
+    display: flex
+    flex-direction: column
+    color: #fff
+    font-size: 18px
+    align-items: center
+    justify-content: space-evenly
+    background: #28244e
+    width: 250px
+    z-index: 9999
+    position: absolute
+    min-height: 150px
+    left: calc(50% - 125px)
+    border-radius: 0 0 15px 15px
+    border-top: 1px solid #14033D
+    div
+        margin-left: 25px
+        width: 100%
+        cursor: pointer
+        user-select: none
+        outline: none
+            
 
 @media all and (min-width: 800px) 
     .app-city-img
