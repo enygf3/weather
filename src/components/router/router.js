@@ -1,3 +1,5 @@
+import favouritePage from "../favouritePage/favouritePage";
+
 function router() {
 	let home = document.querySelector(".panel-item-home");
 	let favourite = document.querySelector(".panel-item-favourites");
@@ -26,6 +28,7 @@ function router() {
 		let url = location.href;
 		if (url.includes("favourite")) {
 			deleteElements("home");
+			renderElements("favourite");
 		} else {
 			deleteElements("favourite");
 			renderElements("home");
@@ -39,6 +42,8 @@ function router() {
 			block.style.display = "none";
 			appCloud.style.display = "none";
 			appTemp.style.display = "none";
+		} else {
+			document.querySelector(".app-favourite").remove();
 		}
 	}
 
@@ -49,6 +54,8 @@ function router() {
 			block.style.display = "flex";
 			appCloud.style.display = "block";
 			appTemp.style.display = "block";
+		} else {
+			favouritePage();
 		}
 	}
 }

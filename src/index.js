@@ -4,9 +4,10 @@ import getFavourite from "./components/getFavourite/getFavourite";
 import getSimilarCities from "./components/getSimilarCities/getSimilarCities";
 import deleteSimilarBlock from "./components/deleteSimilarBlock/deleteSimilarBlock";
 import router from "./components/router/router";
+import favouritePage from "./components/favouritePage/favouritePage";
 
-import home from "./img/home.png";
-import favourite from "./img/favourite.png";
+import home from "./img/home.webp";
+import favourite from "./img/favourite.webp";
 
 //api info
 const _apiBase = "https://api.weatherapi.com/v1/";
@@ -36,14 +37,23 @@ let seacrhItems = [];
 let input = document.querySelector(".app-input-field");
 
 input.onkeyup = handle;
-let i = 0;
 
 function handle(e) {
 	seacrhItems = document.querySelectorAll(".block-item");
 
+	if (e.key === "Enter") {
+		cityValue = input.value;
+		input.value = "";
+		cityValue = cityValue.toLowerCase();
+		if (cityValue != "" && cityValue != " ") {
+			fetch(`${_apiBase}current.json?key=${_apiKey}&q=${cityValue}&aqi=no`)
+				.then((res) => res.json())
+				.then((result) => valid(result));
+		}
+	}
+
 	if (input.value.length >= 3) {
 		getSimilarCities(input.value);
-		console.log(e.target.value, i++);
 	} else {
 		deleteSimilarBlock();
 	}
@@ -61,16 +71,6 @@ function handle(e) {
 			input.value = "";
 			cityValue = el.innerText.toLowerCase();
 		};
-	}
-
-	if (e.key == "Enter") {
-		cityValue = input.value;
-		cityValue = cityValue.toLowerCase();
-		if (cityValue != "" && cityValue != " ") {
-			fetch(`${_apiBase}current.json?key=${_apiKey}&q=${cityValue}&aqi=no`)
-				.then((res) => res.json())
-				.then((result) => valid(result));
-		}
 	}
 }
 
