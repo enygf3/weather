@@ -5,6 +5,7 @@ import getSimilarCities from "./components/getSimilarCities/getSimilarCities";
 import deleteSimilarBlock from "./components/deleteSimilarBlock/deleteSimilarBlock";
 import router from "./components/router/router";
 import favouritePage from "./components/favouritePage/favouritePage";
+import catchError from "./components/catchError/catchError";
 
 import home from "./img/home.webp";
 import favourite from "./img/favourite.webp";
@@ -25,11 +26,15 @@ let windSpeed = document.querySelector(".block-wind-speed");
 let humidity = document.querySelector(".block-humidity");
 let pressure = document.querySelector(".block-pressure");
 
-//base query which is executed when the app is load
+//base query which is executed when the app is loaded
 fetch(`${_apiBase}current.json?key=${_apiKey}&q=Minsk&aqi=no`)
 	.then((res) => res.json())
-	.then((result) => valid(result));
+	.then((result) => valid(result))
+	.catch((err) => {
+		catchError(err);
+	});
 
+//enabling routing in the app
 router();
 
 let cityValue = "minsk";
@@ -38,11 +43,14 @@ let seacrhItems = [];
 //getting input from user, transforming it and sending a query if the input is valid
 let input = document.querySelector(".app-input-field");
 
+//transmitting event to the handle function
 input.onkeyup = handle;
 
+//function that handling onkeyup event
 function handle(e) {
 	seacrhItems = document.querySelectorAll(".block-item");
 
+	//checking if key is an Enter and then in this case making a query to API
 	if (e.key === "Enter") {
 		cityValue = input.value;
 		input.value = "";
@@ -50,16 +58,22 @@ function handle(e) {
 		if (cityValue != "" && cityValue != " ") {
 			fetch(`${_apiBase}current.json?key=${_apiKey}&q=${cityValue}&aqi=no`)
 				.then((res) => res.json())
-				.then((result) => valid(result));
+				.then((result) => valid(result))
+				.catch((err) => {
+					catchError(err);
+				});
 		}
 	}
 
+	//if there are more than 3 symbold rendering city suggestions
 	if (input.value.length >= 3) {
 		getSimilarCities(input.value);
 	} else {
 		deleteSimilarBlock();
 	}
 
+	//checking if user clicked on some item of suggestions, then making a query
+	//then deleting the suggestions and deleting input value
 	for (let el of seacrhItems) {
 		el.onclick = () => {
 			console.log(el);
@@ -67,7 +81,10 @@ function handle(e) {
 				`${_apiBase}current.json?key=${_apiKey}&q=${el.innerText.toLowerCase()}&aqi=no`
 			)
 				.then((res) => res.json())
-				.then((result) => valid(result));
+				.then((result) => valid(result))
+				.catch((err) => {
+					catchError(err);
+				});
 
 			deleteSimilarBlock();
 			input.value = "";
@@ -76,6 +93,7 @@ function handle(e) {
 	}
 }
 
+//function that gets response from the API and pushing data from it to the app
 function valid(res) {
 	if (res) {
 		//pushing weather info
@@ -100,10 +118,14 @@ function valid(res) {
 	}
 }
 
+//function that gets clicked by user city and making a query to API
 export function getSavedCity(props) {
 	let name = props;
 	name = name.toLowerCase();
 	fetch(`${_apiBase}current.json?key=${_apiKey}&q=${name}&aqi=no`)
 		.then((res) => res.json())
-		.then((result) => valid(result));
+		.then((result) => valid(result))
+		.catch((err) => {
+			catchError(err);
+		});
 }

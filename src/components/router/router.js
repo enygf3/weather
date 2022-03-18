@@ -2,6 +2,7 @@ import favouritePage from "../favouritePage/favouritePage";
 import { getSavedCity } from "../..";
 
 function router() {
+	//geting all elements from the main page
 	let home = document.querySelector(".panel-item-home");
 	let favourite = document.querySelector(".panel-item-favourites");
 
@@ -11,6 +12,8 @@ function router() {
 	let appCloud = document.querySelector(".app-cloud");
 	let appTemp = document.querySelector(".app-temp");
 
+	//checking if user clicked on "favourite" button, routing, deleteing elements from the main page
+	//and checking if user clicks on any item from his save city
 	favourite.addEventListener("click", (e) => {
 		history.pushState(null, null, "/favourite");
 		pageChange();
@@ -24,15 +27,19 @@ function router() {
 		}
 	});
 
+	//checking if user clidked on main page button, routing and deleting elements from the "favourite page"
 	home.addEventListener("click", (e) => {
 		history.pushState(null, null, "/");
 		pageChange();
 	});
 
+	//checking if URL have changed
 	window.addEventListener("popstate", () => {
 		pageChange();
 	});
 
+	//routing function
+	//checking URL if it includes "favourite" and then deleteing/rendering elements
 	function pageChange() {
 		let url = location.href;
 		if (url.includes("favourite")) {
@@ -44,6 +51,7 @@ function router() {
 		}
 	}
 
+	//function that deletes all elements from main/favourite page
 	function deleteElements(page) {
 		if (page == "home") {
 			appInput.style.display = "none";
@@ -55,7 +63,7 @@ function router() {
 			document.querySelector(".app-favourite").remove();
 		}
 	}
-
+	//function that renders all elements from main/favourite page
 	function renderElements(page) {
 		if (page == "home") {
 			appInput.style.display = "block";
@@ -64,6 +72,7 @@ function router() {
 			appCloud.style.display = "block";
 			appTemp.style.display = "block";
 		} else {
+			//function that renders "favourite" page
 			favouritePage();
 		}
 	}
