@@ -20,7 +20,7 @@ html, body
     width: 300px
     height: auto
     position: relative
-    margin-top: 250px
+    margin-top: 180px
     margin-left: 50%
     transform: translate(-50%, 0%)
     display: flex
@@ -50,7 +50,7 @@ html, body
 .app-city
     color: #fff
     position: absolute
-    top: 120px
+    top: 40px
     left: 85px
     font-size: 18px
     font-weight: 400
@@ -59,16 +59,17 @@ html, body
     width: 80px
     height: 80px
     position: absolute
-    top: 115px
+    top: 40px
     right: 60px
 
 .app-input
     overflow: hidden
 
 .app-city-block
+    position: relative
     input
         position: absolute
-        top: 120px
+        top: 35px
         left: 55px
         opacity: 0
 
@@ -76,7 +77,7 @@ html, body
     width: 25px
     height: 25px
     position: absolute
-    top: 115px
+    top: 35px
     left: 55px
     cursor: pointer
 
@@ -84,7 +85,7 @@ html, body
     color: #fff
     position: absolute
     top: 150px
-    left: 90px
+    left: 80px
     font-size: 44px
     border-radius: 25px
     font-weight: 400
@@ -93,7 +94,7 @@ html, body
     color: #fff
     position: absolute
     top: 210px
-    left: 50px
+    left: 60px
     font-size: 18px
     border-radius: 25px
     font-weight: 400
@@ -231,25 +232,63 @@ html, body
     padding-top: 10px
     transition-duration: .5s
             
+.app-details
+    width: 300px
+    height: 160px
+    position: absolute
+    background-color: #28244e
+    border-radius: 15px
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 1fr 1fr 1fr 1fr
+    text-align: center
+    left: 50%
+    bottom: 80px
+    transform: translate(-50%, 0)
+    h3
+        color: #fff
+        font-size: 16px
+        padding-top: 15px
 
-@media all and (min-width: 800px) 
+@media all and (min-width: 450px) 
     .app-city-img
-        right: calc(50% - 130px)
+        right: auto
+        left: 35%
+        top: 90px
 
     .app-city
-        left: calc(50% - 130px)
+        left: 30%
+        top: 90px
 
     .app-temp
-        left: calc(50% - 130px)
+        left: 30%
+        top: 200px
 
     .app-cloud
-        left: calc(50% - 130px)
+        left: 29%
+        top: 265px
 
     .app-city-star
-        left: calc(50% - 160px)
+        left: 27.5%
+        top: 85px
 
     .app-cities
         width: 650px
         div
             width: 150px
             height: 80px
+
+    .app-details
+        left: 62.5%
+        top: 165px
+        width: 400px
+        height: 200px
+        transform: translate(0, 0)
+
+    .block
+        margin-top: 350px
+
+    .app-city-block
+        input
+            top: 90px
+            left: 28%

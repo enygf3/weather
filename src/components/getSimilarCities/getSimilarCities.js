@@ -23,7 +23,11 @@ const getSimilarCities = (props) => {
 		let app = document.querySelector(".app-input");
 
 		//checking if block already exists
-		if (!document.querySelector(".app-input-block")) {
+		if (
+			!document.querySelector(".app-input-block") &&
+			!arr.includes(undefined)
+		) {
+			console.log(arr);
 			let block = document.createElement("div");
 			block.className = "app-input-block";
 			app.appendChild(block);

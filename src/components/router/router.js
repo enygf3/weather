@@ -11,6 +11,7 @@ function router() {
 	let block = document.querySelector(".block");
 	let appCloud = document.querySelector(".app-cloud");
 	let appTemp = document.querySelector(".app-temp");
+	let appDetails = document.querySelector(".app-details");
 
 	//checking if user clicked on "favourite" button, routing, deleteing elements from the main page
 	//and checking if user clicks on any item from his save city
@@ -59,6 +60,7 @@ function router() {
 			block.style.display = "none";
 			appCloud.style.display = "none";
 			appTemp.style.display = "none";
+			appDetails.style.display = "none";
 		} else {
 			document.querySelector(".app-favourite").remove();
 		}
@@ -71,6 +73,7 @@ function router() {
 			block.style.display = "flex";
 			appCloud.style.display = "block";
 			appTemp.style.display = "block";
+			appDetails.style.display = "grid";
 		} else {
 			//function that renders "favourite" page
 			favouritePage();

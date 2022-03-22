@@ -28,6 +28,8 @@ function catchError(props) {
 	setTimeout(showEl, 100, errorBlock);
 	setTimeout(hideEl, 4000, errorBlock);
 	setTimeout(deleteEl, 4500, errorBlock);
+
+	return 404;
 }
 
 export default catchError;
