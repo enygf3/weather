@@ -1,4 +1,9 @@
 import Service from "../service/service";
+import valid from "../valid/valid";
+import getFavourite from "../getFavourite/getFavourite";
+import getTheme from "../getTheme/getTheme";
+import catchError from "../catchError/catchError";
+import deleteSimilarBlock from "../deleteSimilarBlock/deleteSimilarBlock";
 
 const getSimilarCities = (props) => {
   let arr = [];
@@ -44,6 +49,21 @@ const getSimilarCities = (props) => {
         items[i].innerHTML = arr[i].name;
       }
     }
+
+    //checking if user clicked on some item of suggestions, then making a query
+    //then deleting the suggestions and deleting input value
+    document.querySelectorAll(".block-item").forEach((el) => {
+      el.onclick = () => {
+        WeatherService.getCurrent(el.innerText.toLowerCase())
+          .then((res) => valid(res, el.innerText, getFavourite, getTheme))
+          .catch((err) => {
+            catchError(err);
+          });
+
+        deleteSimilarBlock();
+        document.querySelector(".app-input-field").value = "";
+      };
+    });
   }
 };
 
