@@ -6,13 +6,10 @@ import deleteSimilarBlock from "./components/deleteSimilarBlock/deleteSimilarBlo
 import router from "./components/router/router";
 import favouritePage from "./components/favouritePage/favouritePage";
 import catchError from "./components/catchError/catchError";
+import Service from "./components/service/service";
 
 import home from "./img/home.webp";
 import favourite from "./img/favourite.webp";
-
-//api info
-const _apiBase = "https://api.weatherapi.com/v1/";
-const _apiKey = "f3355337615d498fbfa03825211912";
 
 //getting html tags
 let check = document.querySelector(".app-city-check");
@@ -35,10 +32,9 @@ let degree = document.querySelector(".details-degree");
 let time = document.querySelector(".details-time");
 let updated = document.querySelector(".details-updated");
 
-//base query which is executed when the app is loaded
-fetch(`${_apiBase}current.json?key=${_apiKey}&q=Minsk&aqi=no`)
-  .then((res) => res.json())
-  .then((result) => valid(result))
+let WeatherService = new Service();
+WeatherService.getCurrent()
+  .then((res) => valid(res))
   .catch((err) => {
     catchError(err);
   });
@@ -64,9 +60,8 @@ function handle(e) {
     input.value = "";
     cityValue = cityValue.toLowerCase();
     if (cityValue != "" && cityValue != " ") {
-      fetch(`${_apiBase}current.json?key=${_apiKey}&q=${cityValue}&aqi=no`)
-        .then((res) => res.json())
-        .then((result) => valid(result))
+      WeatherService.getCurrent(cityValue)
+        .then((res) => valid(res))
         .catch((err) => {
           catchError(err);
         });
@@ -82,13 +77,10 @@ function handle(e) {
 
   //checking if user clicked on some item of suggestions, then making a query
   //then deleting the suggestions and deleting input value
-  for (let el of seacrhItems) {
+  seacrhItems.forEach((el) => {
     el.onclick = () => {
-      fetch(
-        `${_apiBase}current.json?key=${_apiKey}&q=${el.innerText.toLowerCase()}&aqi=no`
-      )
-        .then((res) => res.json())
-        .then((result) => valid(result))
+      WeatherService.getCurrent(el.innerText.toLowerCase())
+        .then((res) => valid(res))
         .catch((err) => {
           catchError(err);
         });
@@ -97,7 +89,7 @@ function handle(e) {
       input.value = "";
       cityValue = el.innerText.toLowerCase();
     };
-  }
+  });
 }
 
 //function that gets response from the API and pushing data from it to the app
@@ -142,11 +134,8 @@ function valid(res) {
 
 //function that gets clicked by user city and making a query to API
 export function getSavedCity(props) {
-  fetch(
-    `${_apiBase}current.json?key=${_apiKey}&q=${props.toLowerCase()}&aqi=no`
-  )
-    .then((res) => res.json())
-    .then((result) => valid(result))
+  WeatherService.getCurrent(props.toLowerCase())
+    .then((res) => valid(res))
     .catch((err) => {
       catchError(err);
     });
