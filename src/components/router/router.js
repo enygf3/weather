@@ -1,5 +1,7 @@
 import favouritePage from "../favouritePage/favouritePage";
-import { getSavedCity } from "../..";
+import getFavourite from "../getFavourite/getFavourite";
+import getTheme from "../getTheme/getTheme";
+import getSavedCity from "../getSavedCity/getSavedCity";
 
 function router() {
   //geting all elements from the main page
@@ -21,7 +23,7 @@ function router() {
     let elements = document.querySelectorAll(".favourite-block-item");
     elements.forEach((el) => {
       el.onclick = function () {
-        getSavedCity(el.firstChild.innerHTML);
+        getSavedCity(el.firstChild.innerHTML, getFavourite, getTheme);
         history.pushState(null, null, "/");
         pageChange();
       };

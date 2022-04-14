@@ -5,8 +5,7 @@ const getFavourite = (cityInput, check, city, star) => {
     localStorage.setItem(cityInput, 0);
   }
   check.onclick = function () {
-    const lower = city.innerHTML.toLowerCase();
-    if (lower == cityInput) {
+    if (city.innerHTML.toLowerCase() === cityInput.toLowerCase()) {
       localStorage.setItem(cityInput, +!+localStorage.getItem(cityInput));
       if (+localStorage.getItem(cityInput)) {
         star.src = "https://img.icons8.com/fluency/48/000000/star.png";

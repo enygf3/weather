@@ -32,6 +32,7 @@ input.onkeyup = handle;
 
 //function that handling onkeyup event
 function handle(e) {
+  console.log(e);
   //checking if key is an Enter and then in this case making a query to API
   if (e.key === "Enter") {
     cityValue = input.value;
@@ -52,13 +53,4 @@ function handle(e) {
   } else {
     deleteSimilarBlock();
   }
-}
-
-//function that gets clicked by user city and making a query to API
-export function getSavedCity(props) {
-  WeatherService.getCurrent(props.toLowerCase())
-    .then((res) => valid(res, props, getFavourite, getTheme))
-    .catch((err) => {
-      catchError(err);
-    });
 }
