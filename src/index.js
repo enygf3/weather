@@ -30,12 +30,10 @@ input.onkeydown = input.onkeyup = handle;
 
 //function that handling onkeyup event
 function handle(e) {
-  console.log(e);
   //checking if key is an Enter and then in this case making a query to API
   if (e.key === "Enter") {
-    cityValue = input.value;
+    cityValue = input.value.toLowerCase().trim();
     input.value = "";
-    cityValue = cityValue.toLowerCase().trim();
     if (cityValue) {
       WeatherService.getCurrent(cityValue)
         .then((res) => valid(res, cityValue, getFavourite, getTheme))
