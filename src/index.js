@@ -30,13 +30,12 @@ input.onkeyup = handle;
 
 //function that handling onkeyup event
 function handle(e) {
-  console.log(e);
   //checking if key is an Enter and then in this case making a query to API
   if (e.key === "Enter") {
     cityValue = input.value;
     input.value = "";
-    cityValue = cityValue.toLowerCase();
-    if (cityValue != "" && cityValue != " ") {
+    cityValue = cityValue.toLowerCase().trim();
+    if (cityValue) {
       WeatherService.getCurrent(cityValue)
         .then((res) => valid(res, cityValue, getFavourite, getTheme))
         .catch((err) => {
@@ -46,7 +45,7 @@ function handle(e) {
   }
 
   //if there are more than 3 symbold rendering city suggestions
-  if (input.value.length >= 3) {
+  if (input.value.trim().length >= 3) {
     getSimilarCities(input.value);
   } else {
     deleteSimilarBlock();
