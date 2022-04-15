@@ -10,7 +10,9 @@ const getSimilarCities = (props) => {
 
   //sending a query to get similar cities
   let WeatherService = new Service();
-  WeatherService.getSearch(props).then((res) => getResults(res));
+  WeatherService.getSearch(props)
+    .then((res) => getResults(res))
+    .catch((err) => catchError(err));
 
   //function that gets the result from the query, transforming it and creating items
   function getResults(res) {
