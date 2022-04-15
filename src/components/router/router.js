@@ -17,7 +17,7 @@ function router() {
 
   //checking if user clicked on "favourite" button, routing, deleteing elements from the main page
   //and checking if user clicks on any item from his save city
-  favourite.addEventListener("click", (e) => {
+  favourite.addEventListener("click", () => {
     history.pushState(null, null, "/favourite");
     pageChange();
     let elements = document.querySelectorAll(".favourite-block-item");
@@ -55,7 +55,7 @@ function router() {
 
   //function that deletes all elements from main/favourite page
   function deleteElements(page) {
-    if (page == "home") {
+    if (page === "home") {
       appInput.style.display = "none";
       appCityBlock.style.display = "none";
       block.style.display = "none";
@@ -68,7 +68,7 @@ function router() {
   }
   //function that renders all elements from main/favourite page
   function renderElements(page) {
-    if (page == "home") {
+    if (page === "home") {
       appInput.style.display = "block";
       appCityBlock.style.display = "block";
       block.style.display = "flex";

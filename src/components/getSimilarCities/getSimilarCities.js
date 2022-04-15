@@ -15,9 +15,7 @@ const getSimilarCities = (props) => {
   //function that gets the result from the query, transforming it and creating items
   function getResults(res) {
     //pushing into a new arr first 3 elements from the response
-    for (let i = 0; i < 3; i++) {
-      arr.push(res[i]);
-    }
+    arr.push(res[0], res[1], res[2]);
 
     //creating block with 3 items(similar cities)
 
@@ -45,9 +43,9 @@ const getSimilarCities = (props) => {
     } else {
       //if the block already exists changing names of the items
       let items = document.querySelectorAll(".block-item-text");
-      for (let i = 0; i < 3; i++) {
-        items[i].innerHTML = arr[i].name;
-      }
+      items[0].innerHTML = arr[0].name;
+      items[1].innerHTML = arr[1].name;
+      items[2].innerHTML = arr[2].name;
     }
 
     //checking if user clicked on some item of suggestions, then making a query
