@@ -1,3 +1,5 @@
+import catchError from "../catchError/catchError";
+
 export default class Service {
   _apiBase = "https://api.weatherapi.com/v1/";
   _apiKey = "f3355337615d498fbfa03825211912";
@@ -9,7 +11,7 @@ export default class Service {
     });
 
     if (!response.ok) {
-      throw new Error(`Could not fetch ${url}, status is ${response.status}`);
+      catchError();
     }
 
     return await response.json();
