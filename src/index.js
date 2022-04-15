@@ -13,11 +13,9 @@ import home from "./img/home.webp";
 import favourite from "./img/favourite.webp";
 
 let WeatherService = new Service();
-WeatherService.getCurrent()
-  .then((res) => valid(res, "minsk", getFavourite, getTheme))
-  .catch((err) => {
-    catchError(err);
-  });
+WeatherService.getCurrent().then((res) =>
+  valid(res, "minsk", getFavourite, getTheme)
+);
 
 //enabling routing in the app
 router();

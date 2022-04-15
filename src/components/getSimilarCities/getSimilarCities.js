@@ -52,11 +52,9 @@ const getSimilarCities = (props) => {
     //then deleting the suggestions and deleting input value
     document.querySelectorAll(".block-item").forEach((el) => {
       el.onclick = () => {
-        WeatherService.getCurrent(el.innerText.toLowerCase())
-          .then((res) => valid(res, el.innerText, getFavourite, getTheme))
-          .catch((err) => {
-            catchError(err);
-          });
+        WeatherService.getCurrent(el.innerText.toLowerCase()).then((res) =>
+          valid(res, el.innerText, getFavourite, getTheme)
+        );
 
         deleteSimilarBlock();
         document.querySelector(".app-input-field").value = "";
