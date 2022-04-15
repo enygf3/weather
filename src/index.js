@@ -26,10 +26,11 @@ let cityValue = "minsk";
 let input = document.querySelector(".app-input-field");
 
 //transmitting event to the handle function
-input.onkeyup = handle;
+input.onkeydown = input.onkeyup = handle;
 
 //function that handling onkeyup event
 function handle(e) {
+  console.log(e);
   //checking if key is an Enter and then in this case making a query to API
   if (e.key === "Enter") {
     cityValue = input.value;
