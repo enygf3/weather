@@ -23,4 +23,4 @@ Done✅
 
         ./src/style - Folder with .sass(styles) of the app
 
-`./` - folder that contain, `source code` and all the `config files`
+`./` - folder that contain `source code` and all the `config files`
