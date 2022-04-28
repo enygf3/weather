@@ -74,7 +74,7 @@ function router() {
       block.style.display = "flex";
       appCloud.style.display = "block";
       appTemp.style.display = "block";
-      appDetails.style.display = "grid";
+      window.innerHeight >= 700 ? (appDetails.style.display = "grid") : "none";
     } else {
       //function that renders "favourite" page
       favouritePage();
