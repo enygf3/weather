@@ -6,18 +6,10 @@ function favouritePage() {
     //creating main block and pushing it
     let appFav = document.createElement("div"); // appFav is an app-favourite
     appFav.className = "app-favourite";
+    appFav.innerHTML = `
+    <h3 class="favourite-title">Saved cities</h3>
+    <div class="favourite-block"></div>`;
     app.appendChild(appFav);
-
-    //creating a title and pushing it
-    let favTitle = document.createElement("h3"); // favTitle is an favourite-title
-    favTitle.innerHTML = "Saved cities";
-    favTitle.className = "favourite-title";
-    appFav.appendChild(favTitle);
-
-    //creating a block for items
-    let favBlock = document.createElement("div"); //favBlock is a favourite-block
-    favBlock.className = "favourite-block";
-    appFav.appendChild(favBlock);
 
     //function that creates an element for each item
     let createEl = (item) => {
@@ -34,7 +26,7 @@ function favouritePage() {
         (prev, item, index) => (index !== 0 ? prev + item : item.toUpperCase()),
         ""
       );
-      favBlock.appendChild(blockItem);
+      document.querySelector(".favourite-block").appendChild(blockItem);
     };
 
     //getting saved cities from the localStorage
