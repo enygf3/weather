@@ -26,7 +26,7 @@ let cityValue = "minsk";
 let input = document.querySelector(".app-input-field");
 
 //transmitting event to the handle function
-input.onkeydown = input.onkeyup = handle;
+input.onkeyup = handle;
 
 //function that handling onkeyup event
 function handle(e) {

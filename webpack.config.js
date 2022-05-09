@@ -13,6 +13,7 @@ module.exports = {
     compress: true,
     port: 9000,
     hot: isDev,
+    historyApiFallback: true,
   },
   mode: "development",
   entry: "./src/index.js",

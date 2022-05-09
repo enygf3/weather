@@ -1,13 +1,13 @@
 //function that catch all errors of API query
-function catchError() {
+function catchError(p) {
   let app = document.getElementById("app");
+
+  console.log(p);
 
   //creating an element for error
   let errorBlock = document.createElement("div");
   errorBlock.className = "error-block";
-  errorBlock.innerText =
-    "Some error has occured. Try other city or check your internet connection";
-  errorBlock.style.opacity = "0";
+  errorBlock.innerHTML = `Some error has occured. Try other city or check your internet connection`;
   app.appendChild(errorBlock);
 
   //function that smoothly show error
